@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 public class Main {
 
@@ -7,8 +6,8 @@ public class Main {
 
         System.out.println("Hello world");
 
-        Lokata lokata = new Lokata();
-        System.out.println(lokata.zyskRoczny(new BigDecimal(25001)));
+        Investment investment = new Investment();
+        System.out.println(investment.calculateOneYearProfit(new BigDecimal(25001)));
 
     }
 }
