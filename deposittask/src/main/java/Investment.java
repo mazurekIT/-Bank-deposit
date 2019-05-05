@@ -10,14 +10,16 @@ public class Investment {
     private Map<BigDecimal, BigDecimal> ranges = new TreeMap<>();
 
 
+    public Investment() {
+        this.addRange(BigDecimal.ZERO, new BigDecimal(0.02));
+        this.addRange(new BigDecimal(50000), new BigDecimal(0.03));
+        this.addRange(new BigDecimal(20000), new BigDecimal(0.025));
+    }
+
+
     public void addRange(BigDecimal range, BigDecimal interest) {
         ranges.put(range, interest);
     }
-
-    private Set<BigDecimal> getKeySet() {
-        return ranges.keySet();
-    }
-
 
     private BigDecimal findValueForKey(BigDecimal key) {
         ranges.putIfAbsent(key, BigDecimal.ZERO);
@@ -29,7 +31,7 @@ public class Investment {
         if (startCapital.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException();
         }
-        for (BigDecimal x : getKeySet()) {
+        for (BigDecimal x : ranges.keySet()) {
             if (startCapital.compareTo(x) > 0) {
                 lowerRange = x;
             }
@@ -44,4 +46,7 @@ public class Investment {
     }
 
 
+    public Map<BigDecimal, BigDecimal> getRanges() {
+        return ranges;
+    }
 }

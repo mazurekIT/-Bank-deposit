@@ -1,27 +1,30 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InvestmentTest {
     private DecimalFormat df = new DecimalFormat("#.00");
     private Investment investment = new Investment();
 
-
     @Test
     public void shouldThrowIllegalArgumentExceptionWhenCapitalIsLowerThanZero() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Investment().calculateOneYearProfit(new BigDecimal(-10));
+            investment.calculateOneYearProfit(new BigDecimal(-10));
         });
     }
 
-
     @Test
-    public void shouldReturnTheSameCapitalWhenRangeIsNotAdded() {
-        assertEquals(df.format(new BigDecimal(10)), investment.calculateOneYearProfit(new BigDecimal(10)));
+    public void shouldPassEveryRange() {
+        for (BigDecimal x : investment.getRanges().keySet()) {
+            BigDecimal profit = BigDecimal.ONE.add(investment.getRanges().get(x));
+            String calculatedProfit = investment.calculateOneYearProfit(x.add(BigDecimal.ONE));
+            String expectedProfit = df.format((x.add(BigDecimal.ONE)).multiply(profit));
+            assertEquals(expectedProfit, calculatedProfit);
+        }
     }
 
 
