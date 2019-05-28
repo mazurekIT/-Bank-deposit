@@ -30,16 +30,16 @@ public class Investment {
                     .withIgnoreHeaderCase()
                     .withTrim());
             for (CSVRecord csvRecord : csvParser) {
-                String kwotaOd = csvRecord.get("kwota_od");
-                BigDecimal od = new BigDecimal(kwotaOd
+                String rangeFromString = csvRecord.get("kwota_od");
+                BigDecimal rangeFrom = new BigDecimal(rangeFromString
                         .replaceAll(" ", "")
                         .replaceAll(",", "."));
-                String oprocentowanie = csvRecord.get("oprocentowanie");
-                BigDecimal opr = new BigDecimal(oprocentowanie
+                String intersetString = csvRecord.get("oprocentowanie");
+                BigDecimal interest = new BigDecimal(intersetString
                 .replaceAll(" ","")
                 .replaceAll(",","."));
 
-                this.addRange(od, opr.divide(new BigDecimal(100)));
+                this.addRange(rangeFrom, interest.divide(new BigDecimal(100)));
             }
         } catch (IOException e) {
             e.printStackTrace();
