@@ -24,27 +24,26 @@ public class Investment {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
-                    .withDelimiter(',')
-                    .withRecordSeparator("|")
+                    .withDelimiter('|')
+                    .withIgnoreSurroundingSpaces(true)
                     .withFirstRecordAsHeader()
                     .withIgnoreHeaderCase()
                     .withTrim());
             for (CSVRecord csvRecord : csvParser) {
-//                String kwotaOd = csvRecord.get("kwota_od ");
-//                String kwotaDo = csvRecord.get("kwota_do");
-//                String oprocentowanie = csvRecord.get("oprocentowanie");
+                String kwotaOd = csvRecord.get("kwota_od");
+                BigDecimal od = new BigDecimal(kwotaOd
+                        .replaceAll(" ", "")
+                        .replaceAll(",", "."));
+                String oprocentowanie = csvRecord.get("oprocentowanie");
+                BigDecimal opr = new BigDecimal(oprocentowanie
+                .replaceAll(" ","")
+                .replaceAll(",","."));
 
-//                System.out.println(kwotaOd + "#" + kwotaDo + "#" + oprocentowanie);
-                System.out.println(csvRecord.toString());
+                this.addRange(od, opr.divide(new BigDecimal(100)));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        this.addRange(BigDecimal.ZERO, new BigDecimal(0.02));
-        this.addRange(new BigDecimal(50000), new BigDecimal(0.03));
-        this.addRange(new BigDecimal(20000), new BigDecimal(0.025));
-
 
     }
 
