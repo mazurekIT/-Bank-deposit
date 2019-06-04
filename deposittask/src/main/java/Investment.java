@@ -14,7 +14,7 @@ import java.util.TreeMap;
 public class Investment {
     DecimalFormat df = new DecimalFormat("#.00");
 
-    private static final String CSV_FILE_PATH = "progi.csv";
+    private static final String filePath = "progi.csv";
 
     private Map<BigDecimal, BigDecimal> ranges = new TreeMap<>();
 
@@ -22,7 +22,7 @@ public class Investment {
     public Investment() {
 
         try {
-            Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
+            Reader reader = Files.newBufferedReader(Paths.get(filePath));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
                     .withDelimiter('|')
                     .withIgnoreSurroundingSpaces(true)
@@ -34,8 +34,8 @@ public class Investment {
                 BigDecimal rangeFrom = new BigDecimal(rangeFromString
                         .replaceAll(" ", "")
                         .replaceAll(",", "."));
-                String intersetString = csvRecord.get("oprocentowanie");
-                BigDecimal interest = new BigDecimal(intersetString
+                String interestString = csvRecord.get("oprocentowanie");
+                BigDecimal interest = new BigDecimal(interestString
                 .replaceAll(" ","")
                 .replaceAll(",","."));
 
@@ -59,7 +59,7 @@ public class Investment {
 
     private BigDecimal findRangeOfStartCapital(BigDecimal startCapital) {
         BigDecimal lowerRange = BigDecimal.ZERO;
-        if (startCapital.compareTo(BigDecimal.ZERO) < 0) {
+        if (startCapital.compareTo(lowerRange) < 0) {
             throw new IllegalArgumentException();
         }
         for (BigDecimal x : ranges.keySet()) {

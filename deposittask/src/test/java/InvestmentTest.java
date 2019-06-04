@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -18,11 +19,31 @@ public class InvestmentTest {
     }
 
     @Test
+    public void shouldReturnZeroForCapitalEqualsZero() {
+        String expectedProfit = ",00";
+        BigDecimal capitalZero = BigDecimal.ZERO;
+        String calculateProfit = investment.calculateOneYearProfit(capitalZero);
+
+        assertEquals(expectedProfit, calculateProfit);
+
+    }
+
+
+//    @Test
+//    public void shouldCountAtFirstRange(){
+//        String expectedProfit = "1020,00";
+//        BigDecimal capital = new BigDecimal("1000");
+//        String calculatedProfit = investment.calculateOneYearProfit(capital);
+//        assertEquals(expectedProfit,calculatedProfit);
+//    }
+
+    @Test
     public void shouldPassEveryRange() {
         for (BigDecimal x : investment.getRanges().keySet()) {
             BigDecimal profit = BigDecimal.ONE.add(investment.getRanges().get(x));
             String calculatedProfit = investment.calculateOneYearProfit(x.add(BigDecimal.ONE));
             String expectedProfit = df.format((x.add(BigDecimal.ONE)).multiply(profit));
+
             assertEquals(expectedProfit, calculatedProfit);
         }
     }
