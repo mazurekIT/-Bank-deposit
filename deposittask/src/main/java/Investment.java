@@ -15,12 +15,10 @@ public class Investment {
     DecimalFormat df = new DecimalFormat("#.00");
 
     private static final String filePath = "progi.csv";
-
     private Map<BigDecimal, BigDecimal> ranges = new TreeMap<>();
 
 
     public Investment() {
-
         try {
             Reader reader = Files.newBufferedReader(Paths.get(filePath));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
@@ -36,15 +34,14 @@ public class Investment {
                         .replaceAll(",", "."));
                 String interestString = csvRecord.get("oprocentowanie");
                 BigDecimal interest = new BigDecimal(interestString
-                .replaceAll(" ","")
-                .replaceAll(",","."));
+                        .replaceAll(" ", "")
+                        .replaceAll(",", "."));
 
                 this.addRange(rangeFrom, interest.divide(new BigDecimal(100)));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
