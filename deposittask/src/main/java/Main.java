@@ -8,7 +8,7 @@ public class Main {
 
         Investment investment = new Investment();
 
-        System.out.println(investment.calculateOneYearProfit(new BigDecimal(25000)));
+        System.out.println(investment.calculateOneYearProfit(new BigDecimal(20000)));
 
     }
 }

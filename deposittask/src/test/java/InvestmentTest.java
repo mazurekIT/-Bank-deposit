@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -37,16 +36,16 @@ public class InvestmentTest {
 //        assertEquals(expectedProfit,calculatedProfit);
 //    }
 
-    @Test
-    public void shouldPassEveryRange() {
-        for (BigDecimal x : investment.getRanges().keySet()) {
-            BigDecimal profit = BigDecimal.ONE.add(investment.getRanges().get(x));
-            String calculatedProfit = investment.calculateOneYearProfit(x.add(BigDecimal.ONE));
-            String expectedProfit = df.format((x.add(BigDecimal.ONE)).multiply(profit));
-
-            assertEquals(expectedProfit, calculatedProfit);
-        }
-    }
+//    @Test
+//    public void shouldPassEveryRange() {
+//        for (BigDecimal x : investment.getRanges().keySet()) {
+//            BigDecimal profit = BigDecimal.ONE.add(investment.getRanges().get(x));
+//            String calculatedProfit = investment.calculateOneYearProfit(x.add(BigDecimal.ONE));
+//            String expectedProfit = df.format((x.add(BigDecimal.ONE)).multiply(profit));
+//
+//            assertEquals(expectedProfit, calculatedProfit);
+//        }
+//    }
 
 
 }
