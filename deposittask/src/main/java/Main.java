@@ -6,9 +6,9 @@ public class Main {
 
         System.out.println("Hello world");
 
-        Investment investment = new Investment();
+//        Investment investment = new Investment();
 
-        System.out.println(investment.calculateOneYearProfit(new BigDecimal(20000)));
+//        System.out.println(investment.calculateOneYearProfit(new BigDecimal(20000)));
 
     }
 }
