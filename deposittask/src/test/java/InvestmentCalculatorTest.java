@@ -6,9 +6,9 @@ import java.text.DecimalFormat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class InvestmentTest {
+public class InvestmentCalculatorTest {
     private DecimalFormat df = new DecimalFormat("#.00");
-    private Investment investment = new Investment();
+    private InvestmentCalculator investmentCalculator = new InvestmentCalculator();
 //
 //    @Test
 //    public void shouldThrowIllegalArgumentExceptionWhenCapitalIsLowerThanZero() {
@@ -17,24 +17,24 @@ public class InvestmentTest {
 //        });
 //    }
 //
-//    @Test
-//    public void shouldReturnZeroForCapitalEqualsZero() {
-//        String expectedProfit = ",00";
-//        BigDecimal capitalZero = BigDecimal.ZERO;
-//        String calculateProfit = investment.calculateOneYearProfit(capitalZero);
-//
-//        assertEquals(expectedProfit, calculateProfit);
-//
-//    }
+    @Test
+    public void shouldReturnZeroForCapitalEqualsZero() {
+        String expectedProfit = ",00";
+        Capital capitalZero = new Capital(BigDecimal.ZERO);
+        String calculateProfit = investmentCalculator.calculateOneYearProfit(capitalZero.getCapitalValue());
+
+        assertEquals(expectedProfit, calculateProfit);
+
+    }
 
 
-//    @Test
-//    public void shouldCountAtFirstRange(){
-//        String expectedProfit = "1020,00";
-//        BigDecimal capital = new BigDecimal("1000");
-//        String calculatedProfit = investment.calculateOneYearProfit(capital);
-//        assertEquals(expectedProfit,calculatedProfit);
-//    }
+    @Test
+    public void shouldCountAtFirstRange(){
+        String expectedProfit = "1020,00";
+        Capital capital = new Capital(new BigDecimal("1000"));
+        String calculatedProfit = investmentCalculator.calculateOneYearProfit(capital.getCapitalValue());
+        assertEquals(expectedProfit,calculatedProfit);
+    }
 
 //    @Test
 //    public void shouldPassEveryRange() {

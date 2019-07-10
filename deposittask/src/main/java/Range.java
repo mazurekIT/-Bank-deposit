@@ -16,6 +16,8 @@ public class Range {
         this.interest = BigDecimal.ZERO;
     }
 
+
+
     public BigDecimal getMinCapital() {
         return minCapital;
     }

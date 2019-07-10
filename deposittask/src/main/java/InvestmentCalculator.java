@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class Investment {
+public class InvestmentCalculator {
     DecimalFormat df = new DecimalFormat("#.00");
 
 
