@@ -57,9 +57,6 @@ public class CSVReader implements ICSVService {
 
     }
 
-    public String getFilePath() {
-        return filePath;
-    }
 
     public List<Range> getRangesList() {
         return rangesList;

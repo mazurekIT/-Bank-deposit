@@ -9,23 +9,23 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class InvestmentTest {
     private DecimalFormat df = new DecimalFormat("#.00");
     private Investment investment = new Investment();
-
-    @Test
-    public void shouldThrowIllegalArgumentExceptionWhenCapitalIsLowerThanZero() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            investment.calculateOneYearProfit(new BigDecimal(-10));
-        });
-    }
-
-    @Test
-    public void shouldReturnZeroForCapitalEqualsZero() {
-        String expectedProfit = ",00";
-        BigDecimal capitalZero = BigDecimal.ZERO;
-        String calculateProfit = investment.calculateOneYearProfit(capitalZero);
-
-        assertEquals(expectedProfit, calculateProfit);
-
-    }
+//
+//    @Test
+//    public void shouldThrowIllegalArgumentExceptionWhenCapitalIsLowerThanZero() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            investment.calculateOneYearProfit(new BigDecimal(-10));
+//        });
+//    }
+//
+//    @Test
+//    public void shouldReturnZeroForCapitalEqualsZero() {
+//        String expectedProfit = ",00";
+//        BigDecimal capitalZero = BigDecimal.ZERO;
+//        String calculateProfit = investment.calculateOneYearProfit(capitalZero);
+//
+//        assertEquals(expectedProfit, calculateProfit);
+//
+//    }
 
 
 //    @Test

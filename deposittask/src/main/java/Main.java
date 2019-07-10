@@ -4,11 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello world");
+        Capital capital = new Capital(new BigDecimal(30000));
 
-//        Investment investment = new Investment();
+        Investment investment = new Investment();
 
-//        System.out.println(investment.calculateOneYearProfit(new BigDecimal(20000)));
+        System.out.println(investment.calculateOneYearProfit(capital.getCapitalValue()));
 
     }
 }

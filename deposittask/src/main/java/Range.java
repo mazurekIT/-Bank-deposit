@@ -1,8 +1,6 @@
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 public class Range {
-//    DecimalFormat df = new DecimalFormat("#.00");
 
     private BigDecimal minCapital;
     private BigDecimal maxCapital;
@@ -15,30 +13,22 @@ public class Range {
     }
 
     public Range() {
+        this.interest = BigDecimal.ZERO;
     }
 
     public BigDecimal getMinCapital() {
         return minCapital;
     }
 
-    public void setMinCapital(BigDecimal minCapital) {
-        this.minCapital = minCapital;
-    }
 
     public BigDecimal getMaxCapital() {
         return maxCapital;
     }
 
-    public void setMaxCapital(BigDecimal maxCapital) {
-        this.maxCapital = maxCapital;
-    }
 
     public BigDecimal getInterest() {
         return interest;
     }
 
-    public void setInterest(BigDecimal interest) {
-        this.interest = interest;
-    }
 }
 

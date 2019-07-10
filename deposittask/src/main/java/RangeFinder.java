@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class RangeFinder {
-    CSVReader csvReader = new CSVReader("progi.csv");
+    private CSVReader csvReader = new CSVReader("progi.csv");
 
     public Range findProperRangeForCapital(BigDecimal startCapital) {
         Range range = new Range();
