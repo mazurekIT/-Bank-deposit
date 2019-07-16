@@ -6,6 +6,9 @@ public class Capital {
 
 
     public Capital(BigDecimal capitalValue) {
+        if (capitalValue.compareTo(BigDecimal.ZERO)<1){
+            throw new IllegalArgumentException("Invalid capital: "+ capitalValue);
+        }
         this.capitalValue = capitalValue;
     }
 
