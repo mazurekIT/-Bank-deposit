@@ -10,18 +10,21 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVReader implements ICSVService {
+public class CSVReader implements FileReaderService {
 
     private String filePath;
     private List<Range> rangesList = new ArrayList<>();
+    private final String unitNameForRangeFrom = "kwota_od";
+    private final String unitNameForRangeTo = "kwota_do";
+    private final String unitNameForInterest = "oprocentowanie";
 
     public CSVReader(String filePath) {
         this.filePath = filePath;
-        this.readRangesFromCSV();
+        this.readRangesFromFile();
     }
 
     @Override
-    public void readRangesFromCSV() {
+    public void readRangesFromFile() {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(filePath));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
@@ -32,22 +35,12 @@ public class CSVReader implements ICSVService {
                     .withTrim());
 
             for (CSVRecord csvRecord : csvParser) {
-                String rangeFromString = csvRecord.get("kwota_od");
-                BigDecimal rangeFrom = new BigDecimal(rangeFromString
-                        .replaceAll(" ", "")
-                        .replaceAll(",", "."));
 
-                String rangeToString = csvRecord.get("kwota_do");
-                BigDecimal rangeTo = new BigDecimal(rangeToString
-                        .replaceAll(" ", "")
-                        .replaceAll(",", "."));
+                BigDecimal rangeFrom = readFromUnit(csvRecord, unitNameForRangeFrom);
+                BigDecimal rangeTo = readFromUnit(csvRecord, unitNameForRangeTo);
+                BigDecimal interest = readFromUnit(csvRecord, unitNameForInterest);
 
-                String interestString = csvRecord.get("oprocentowanie");
-                BigDecimal interest = new BigDecimal(interestString
-                        .replaceAll(" ", "")
-                        .replaceAll(",", "."));
-
-                rangesList.add(new Range(rangeFrom,rangeTo,interest.divide(new BigDecimal(100))));
+                rangesList.add(new Range(rangeFrom, rangeTo, interest.divide(new BigDecimal(100))));
             }
 
 
@@ -55,6 +48,14 @@ public class CSVReader implements ICSVService {
             e.printStackTrace();
         }
 
+    }
+
+    private BigDecimal readFromUnit(CSVRecord record, String unit) {
+        String rawString = record.get(unit);
+        BigDecimal convertValue = new BigDecimal(rawString
+                .replaceAll(" ", "")
+                .replaceAll(",", "."));
+        return convertValue;
     }
 
 

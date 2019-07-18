@@ -2,19 +2,19 @@ import java.math.BigDecimal;
 
 public class Capital {
 
-    private BigDecimal capitalValue;
+    private BigDecimal value;
 
 
-    public Capital(BigDecimal capitalValue) {
-        if (capitalValue.compareTo(BigDecimal.ZERO)<1){
-            throw new IllegalArgumentException("Invalid capital: "+ capitalValue);
+    public Capital(BigDecimal value) {
+        if (value.compareTo(BigDecimal.ZERO)<1){
+            throw new IllegalArgumentException("Invalid capital: "+ value);
         }
-        this.capitalValue = capitalValue;
+        this.value = value;
     }
 
 
-    public BigDecimal getCapitalValue() {
-        return capitalValue;
+    public BigDecimal getValue() {
+        return value;
     }
 
 }

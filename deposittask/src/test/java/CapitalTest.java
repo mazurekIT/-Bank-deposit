@@ -10,7 +10,7 @@ class CapitalTest {
     public void create(){
         final Capital capital = new Capital(new BigDecimal(10));
         BigDecimal bigDecimal = new BigDecimal(10);
-        assertEquals(bigDecimal,capital.getCapitalValue());
+        assertEquals(bigDecimal,capital.getValue());
     }
 
 
