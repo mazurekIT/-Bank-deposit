@@ -11,7 +11,7 @@ public class RangeFinder {
     public Range findProperRangeForCapital(BigDecimal startCapital) {
         Range range = new Range();
         for (Range csvrange : csvReader.getRangesList()) {
-            if (isMoreThanMinRange(startCapital, (csvrange.getMinCapital())) && isLessThanOrEqualsMaxRange(startCapital, (csvrange.getMaxCapital()))) {
+            if (isMoreThanMinRange(startCapital, csvrange.getMinCapital()) && isLessThanOrEqualsMaxRange(startCapital, csvrange.getMaxCapital())) {
                 return csvrange;
             }
         }
@@ -19,7 +19,7 @@ public class RangeFinder {
     }
 
     private boolean isMoreThanMinRange(BigDecimal capital, BigDecimal range) {
-        return (capital.compareTo(range) == 1);
+        return capital.compareTo(range) == 1;
     }
 
     private boolean isLessThanOrEqualsMaxRange(BigDecimal capital, BigDecimal range) {

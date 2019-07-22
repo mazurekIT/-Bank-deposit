@@ -14,9 +14,9 @@ public class CSVReader implements FileReaderService {
 
     private String filePath;
     private List<Range> rangesList = new ArrayList<>();
-    private final String unitNameForRangeFrom = "kwota_od";
-    private final String unitNameForRangeTo = "kwota_do";
-    private final String unitNameForInterest = "oprocentowanie";
+    private static final String UNIT_NAME_FOR_RANGE_FROM = "kwota_od";
+    private static final String UNIT_NAME_FOR_RANGE_TO = "kwota_do";
+    private static final String UNIT_NAME_FOR_INTEREST = "oprocentowanie";
 
     public CSVReader(String filePath) {
         this.filePath = filePath;
@@ -36,9 +36,9 @@ public class CSVReader implements FileReaderService {
 
             for (CSVRecord csvRecord : csvParser) {
 
-                BigDecimal rangeFrom = readFromUnit(csvRecord, unitNameForRangeFrom);
-                BigDecimal rangeTo = readFromUnit(csvRecord, unitNameForRangeTo);
-                BigDecimal interest = readFromUnit(csvRecord, unitNameForInterest);
+                BigDecimal rangeFrom = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_FROM);
+                BigDecimal rangeTo = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO);
+                BigDecimal interest = readFromUnit(csvRecord, UNIT_NAME_FOR_INTEREST);
 
                 rangesList.add(new Range(rangeFrom, rangeTo, interest.divide(new BigDecimal(100))));
             }
@@ -51,11 +51,9 @@ public class CSVReader implements FileReaderService {
     }
 
     private BigDecimal readFromUnit(CSVRecord record, String unit) {
-        String rawString = record.get(unit);
-        BigDecimal convertValue = new BigDecimal(rawString
+        return new BigDecimal(record.get(unit)
                 .replaceAll(" ", "")
                 .replaceAll(",", "."));
-        return convertValue;
     }
 
 
