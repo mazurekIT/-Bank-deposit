@@ -6,7 +6,9 @@ public class Main {
 
         Capital capital = new Capital(new BigDecimal(50000));
 
-        RangeFinder rangeFinder = new RangeFinder("progi.csv");
+        CSVReader csvReader = new CSVReader("progi.csv");
+
+        RangeFinder rangeFinder = new RangeFinder(csvReader);
 
         InvestmentCalculator investmentCalculator = new InvestmentCalculator(rangeFinder);
 

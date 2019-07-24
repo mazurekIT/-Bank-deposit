@@ -4,11 +4,9 @@ import java.util.Optional;
 public class RangeFinder {
     private CSVReader csvReader;
 
-    public RangeFinder(String filePath) {
-        //TODO zabezpieczenie czy plik istnieje
-        this.csvReader = new CSVReader(filePath);
+    public RangeFinder(CSVReader csvReader) {
+        this.csvReader = csvReader;
     }
-
 
     public Optional<Range> findProperRangeForCapital(BigDecimal startCapital) {
         for (Range csvrange : csvReader.getRangesList()) {
