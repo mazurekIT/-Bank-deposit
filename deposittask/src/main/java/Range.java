@@ -21,10 +21,13 @@ public class Range {
         this.interest = interest;
     }
 
-    public Range() {
-        this.interest = BigDecimal.ZERO;
-    }
+//    public Range() {
+//        this.interest = BigDecimal.ZERO;
+//    }
 
+
+    public Range() {
+    }
 
     public BigDecimal getMinCapital() {
         return minCapital;
