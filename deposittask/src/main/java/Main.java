@@ -6,7 +6,9 @@ public class Main {
 
         Capital capital = new Capital(new BigDecimal(50000));
 
-        InvestmentCalculator investmentCalculator = new InvestmentCalculator();
+        RangeFinder rangeFinder = new RangeFinder("progi.csv");
+
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(rangeFinder);
 
         System.out.println(investmentCalculator.calculateOneYearProfit(capital.getValue()));
 

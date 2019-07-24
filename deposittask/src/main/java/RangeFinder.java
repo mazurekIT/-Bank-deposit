@@ -9,15 +9,6 @@ public class RangeFinder {
         this.csvReader = new CSVReader(filePath);
     }
 
-//    public Range findProperRangeForCapital(BigDecimal startCapital) {
-//        Range range = new Range();
-//        for (Range csvrange : csvReader.getRangesList()) {
-//            if (isMoreThanMinRange(startCapital, csvrange.getMinCapital()) && isLessThanOrEqualsMaxRange(startCapital, csvrange.getMaxCapital())) {
-//                return csvrange;
-//            }
-//        }
-//        return range;
-//    }
 
     public Optional<Range> findProperRangeForCapital(BigDecimal startCapital) {
         for (Range csvrange : csvReader.getRangesList()) {
