@@ -10,21 +10,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVReader implements FileReaderService {
+public class CSVReader implements RangeProvider {
 
     private String filePath;
-    private List<Range> rangesList = new ArrayList<>();
     private static final String UNIT_NAME_FOR_RANGE_FROM = "kwota_od";
     private static final String UNIT_NAME_FOR_RANGE_TO = "kwota_do";
     private static final String UNIT_NAME_FOR_INTEREST = "oprocentowanie";
 
     public CSVReader(String filePath) {
         this.filePath = filePath;
-        this.readRangesFromFile();
     }
 
     @Override
-    public void readRangesFromFile() {
+    public List<Range> getAvailableRanges() {
+        List<Range> rangesList = new ArrayList<>();
         try {
             Reader reader = Files.newBufferedReader(Paths.get(filePath));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
@@ -47,6 +46,7 @@ public class CSVReader implements FileReaderService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return rangesList;
 
     }
 
@@ -56,9 +56,5 @@ public class CSVReader implements FileReaderService {
                 .replaceAll(",", "."));
     }
 
-
-    public List<Range> getRangesList() {
-        return rangesList;
-    }
 
 }

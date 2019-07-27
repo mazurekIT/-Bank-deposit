@@ -6,7 +6,7 @@ public class Main {
 
         Capital capital = new Capital(new BigDecimal(50000));
 
-        CSVReader csvReader = new CSVReader("progi.csv");
+        RangeProvider csvReader = new CSVReader("progi.csv");
 
         RangeFinder rangeFinder = new RangeFinder(csvReader);
 

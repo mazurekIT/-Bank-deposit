@@ -3,7 +3,7 @@ import java.text.DecimalFormat;
 import java.util.Optional;
 
 public class InvestmentCalculator {
-    private final DecimalFormat DF = new DecimalFormat("#.00");
+    private static final DecimalFormat DF = new DecimalFormat("#.00");
 
     private RangeFinder rangeFinder;
 
@@ -16,7 +16,7 @@ public class InvestmentCalculator {
         if (properRangeForCapital.isPresent()) {
             return DF.format(startCapital.multiply(BigDecimal.ONE.add(properRangeForCapital.get().getInterest())));
         }
-        return "brak zdeklarowanych progów";
+        return DF.format(startCapital);
     }
 
 

@@ -21,10 +21,6 @@ public class Range {
         this.interest = interest;
     }
 
-//    public Range() {
-//        this.interest = BigDecimal.ZERO;
-//    }
-
 
     public Range() {
     }
