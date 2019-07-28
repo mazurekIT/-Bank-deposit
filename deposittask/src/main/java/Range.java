@@ -22,9 +22,6 @@ public class Range {
     }
 
 
-    public Range() {
-    }
-
     public BigDecimal getMinCapital() {
         return minCapital;
     }

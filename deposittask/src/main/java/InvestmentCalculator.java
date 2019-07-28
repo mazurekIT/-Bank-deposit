@@ -3,7 +3,7 @@ import java.text.DecimalFormat;
 import java.util.Optional;
 
 public class InvestmentCalculator {
-    private static final DecimalFormat DF = new DecimalFormat("#.00");
+    private static final DecimalFormat DF = new DecimalFormat("#0.00");
 
     private RangeFinder rangeFinder;
 
