@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Range {
 
@@ -21,6 +22,20 @@ public class Range {
         this.interest = interest;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Range range = (Range) o;
+        return minCapital.equals(range.minCapital) &&
+                maxCapital.equals(range.maxCapital) &&
+                interest.equals(range.interest);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(minCapital, maxCapital, interest);
+    }
 
     public BigDecimal getMinCapital() {
         return minCapital;

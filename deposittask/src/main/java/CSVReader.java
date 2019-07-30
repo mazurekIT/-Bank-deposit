@@ -36,10 +36,11 @@ public class CSVReader implements RangeProvider {
             for (CSVRecord csvRecord : csvParser) {
 
                 BigDecimal rangeFrom = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_FROM);
-                BigDecimal rangeTo = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO);
+//                BigDecimal rangeTo = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO);
+                BigDecimal rangeTo = new BigDecimal(readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO).toString());
                 BigDecimal interest = readFromUnit(csvRecord, UNIT_NAME_FOR_INTEREST);
 
-                rangesList.add(new Range(rangeFrom, rangeTo, interest.divide(new BigDecimal(100))));
+                rangesList.add(new Range(rangeFrom, rangeTo, interest));
             }
 
 
@@ -53,6 +54,7 @@ public class CSVReader implements RangeProvider {
     private BigDecimal readFromUnit(CSVRecord record, String unit) {
         return new BigDecimal(record.get(unit)
                 .replaceAll(" ", "")
+                .replaceAll(",00","")
                 .replaceAll(",", "."));
     }
 

@@ -3,8 +3,10 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CSVReaderTest {
     private static final DecimalFormat DF = new DecimalFormat("#0.00");
@@ -24,27 +26,16 @@ class CSVReaderTest {
     }
 
     @Test
-    public void shouldReadProperlyFirstRange() {
+    public void shouldReadProperlyAllRanges(){
         CSVReader csvReader = new CSVReader(filePath());
-        assertEquals(DF.format(BigDecimal.ZERO), DF.format(getRangeFromList(csvReader, 0).getMinCapital()));
-        assertEquals(DF.format(new BigDecimal(10000)), DF.format(getRangeFromList(csvReader, 0).getMaxCapital()));
-        assertEquals(DF.format(new BigDecimal(0.02)), DF.format(getRangeFromList(csvReader, 0).getInterest()));
-    }
+        Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
+        Range secondRange = new Range(new BigDecimal(10000), new BigDecimal(20000), new BigDecimal(4));
+        Range thirdRange = new Range(new BigDecimal(20000), new BigDecimal(30000.00), new BigDecimal(6));
 
-    @Test
-    public void shouldReadProperlySecondRange() {
-        CSVReader csvReader = new CSVReader(filePath());
-        assertEquals(DF.format(new BigDecimal(10000)), DF.format(getRangeFromList(csvReader, 1).getMinCapital()));
-        assertEquals(DF.format(new BigDecimal(20000)), DF.format(getRangeFromList(csvReader, 1).getMaxCapital()));
-        assertEquals(DF.format(new BigDecimal(0.04)), DF.format(getRangeFromList(csvReader, 1).getInterest()));
-    }
+        assertTrue(firstRange.equals(getRangeFromList(csvReader,0)));
+        assertTrue(secondRange.equals(getRangeFromList(csvReader,1)));
+        assertTrue(thirdRange.equals(getRangeFromList(csvReader,2)));
 
-    @Test
-    public void shouldReadProperlyThirdRange() {
-        CSVReader csvReader = new CSVReader(filePath());
-        assertEquals(DF.format(new BigDecimal(20000)), DF.format(getRangeFromList(csvReader, 2).getMinCapital()));
-        assertEquals(DF.format(new BigDecimal(30000)), DF.format(getRangeFromList(csvReader, 2).getMaxCapital()));
-        assertEquals(DF.format(new BigDecimal(0.06)), DF.format(getRangeFromList(csvReader, 2).getInterest()));
     }
 
     private Range getRangeFromList(CSVReader csvReader, int index) {

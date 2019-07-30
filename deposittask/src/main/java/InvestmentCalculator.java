@@ -14,7 +14,10 @@ public class InvestmentCalculator {
     public String calculateOneYearProfit(BigDecimal startCapital) {
         Optional<Range> properRangeForCapital = rangeFinder.findProperRangeForCapital(startCapital);
         if (properRangeForCapital.isPresent()) {
-            return DF.format(startCapital.multiply(BigDecimal.ONE.add(properRangeForCapital.get().getInterest())));
+            return DF.format(
+                    startCapital.multiply(
+                    BigDecimal.ONE.add(properRangeForCapital.get().getInterest().divide(new BigDecimal(100)))
+                    ));
         }
         return DF.format(startCapital);
     }
