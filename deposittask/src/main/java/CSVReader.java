@@ -36,8 +36,7 @@ public class CSVReader implements RangeProvider {
             for (CSVRecord csvRecord : csvParser) {
 
                 BigDecimal rangeFrom = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_FROM);
-//                BigDecimal rangeTo = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO);
-                BigDecimal rangeTo = new BigDecimal(readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO).toString());
+                BigDecimal rangeTo = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO);
                 BigDecimal interest = readFromUnit(csvRecord, UNIT_NAME_FOR_INTEREST);
 
                 rangesList.add(new Range(rangeFrom, rangeTo, interest));

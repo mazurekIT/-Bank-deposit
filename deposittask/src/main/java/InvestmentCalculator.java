@@ -16,8 +16,7 @@ public class InvestmentCalculator {
         if (properRangeForCapital.isPresent()) {
             return DF.format(
                     startCapital.multiply(
-                    BigDecimal.ONE.add(properRangeForCapital.get().getInterest().divide(new BigDecimal(100)))
-                    ));
+                    BigDecimal.ONE.add(properRangeForCapital.get().getInterest().divide(new BigDecimal(100)))));
         }
         return DF.format(startCapital);
     }
