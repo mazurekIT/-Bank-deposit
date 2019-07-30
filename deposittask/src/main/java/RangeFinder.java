@@ -2,16 +2,16 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 public class RangeFinder {
-    private RangeProvider csvReader;
+    private RangeProvider rangeProvider;
 
-    public RangeFinder(RangeProvider csvReader) {
-        this.csvReader = csvReader;
+    public RangeFinder(RangeProvider rangeProvider) {
+        this.rangeProvider = rangeProvider;
     }
 
     public Optional<Range> findProperRangeForCapital(BigDecimal startCapital) {
-        for (Range csvrange : csvReader.getAvailableRanges()) {
-            if (isMoreThanMinRange(startCapital, csvrange.getMinCapital()) && isLessThanOrEqualsMaxRange(startCapital, csvrange.getMaxCapital())) {
-                return Optional.of(csvrange);
+        for (Range range : rangeProvider.getAvailableRanges()) {
+            if (isMoreThanMinRange(startCapital, range.getMinCapital()) && isLessThanOrEqualsMaxRange(startCapital, range.getMaxCapital())) {
+                return Optional.of(range);
             }
         }
         return Optional.empty();
