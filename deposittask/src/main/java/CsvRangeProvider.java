@@ -6,18 +6,19 @@ import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVReader implements RangeProvider {
+public class CsvRangeProvider implements RangeProvider {
 
     private String filePath;
     private static final String UNIT_NAME_FOR_RANGE_FROM = "kwota_od";
     private static final String UNIT_NAME_FOR_RANGE_TO = "kwota_do";
     private static final String UNIT_NAME_FOR_INTEREST = "oprocentowanie";
 
-    public CSVReader(String filePath) {
+    public CsvRangeProvider(String filePath) {
         this.filePath = filePath;
     }
 
@@ -44,7 +45,7 @@ public class CSVReader implements RangeProvider {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Brak pliku o podanej nazwie"+"\n"+e);
         }
         return rangesList;
 

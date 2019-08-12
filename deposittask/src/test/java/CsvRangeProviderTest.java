@@ -6,14 +6,14 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class CSVReaderTest {
+class CsvRangeProviderTest {
 
 
     @Test
     public void shouldCheckSizeOfRangesList() {
-        CSVReader csvReader = new CSVReader(filePath());
+        CsvRangeProvider csvRangeProvider = new CsvRangeProvider(filePath());
         int expectedSizeOfRanges = 3;
-        assertEquals(expectedSizeOfRanges, csvReader.getAvailableRanges().size());
+        assertEquals(expectedSizeOfRanges, csvRangeProvider.getAvailableRanges().size());
     }
 
     private String filePath() {
@@ -24,18 +24,18 @@ class CSVReaderTest {
 
     @Test
     public void shouldReadProperlyAllRanges() {
-        CSVReader csvReader = new CSVReader(filePath());
+        CsvRangeProvider csvRangeProvider = new CsvRangeProvider(filePath());
         Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
         Range secondRange = new Range(new BigDecimal(10000), new BigDecimal(20000), new BigDecimal(4));
         Range thirdRange = new Range(new BigDecimal(20000), new BigDecimal(30000.00), new BigDecimal(6));
 
-        assertTrue(firstRange.equals(getRangeFromList(csvReader, 0)));
-        assertTrue(secondRange.equals(getRangeFromList(csvReader, 1)));
-        assertTrue(thirdRange.equals(getRangeFromList(csvReader, 2)));
+        assertTrue(firstRange.equals(getRangeFromList(csvRangeProvider, 0)));
+        assertTrue(secondRange.equals(getRangeFromList(csvRangeProvider, 1)));
+        assertTrue(thirdRange.equals(getRangeFromList(csvRangeProvider, 2)));
     }
 
-    private Range getRangeFromList(CSVReader csvReader, int index) {
-        return csvReader.getAvailableRanges().get(index);
+    private Range getRangeFromList(CsvRangeProvider csvRangeProvider, int index) {
+        return csvRangeProvider.getAvailableRanges().get(index);
     }
 
 }
