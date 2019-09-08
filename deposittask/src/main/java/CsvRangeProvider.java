@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class CsvRangeProvider implements RangeProvider {
 
 
         } catch (IOException e) {
-            System.out.println("Brak pliku o podanej nazwie"+"\n"+e);
+            System.out.println("Brak pliku o podanej nazwie" + "\n" + e);
         }
         return rangesList;
 
@@ -54,7 +53,7 @@ public class CsvRangeProvider implements RangeProvider {
     private BigDecimal readFromUnit(CSVRecord record, String unit) {
         return new BigDecimal(record.get(unit)
                 .replaceAll(" ", "")
-                .replaceAll(",00","")
+                .replaceAll(",00", "")
                 .replaceAll(",", "."));
     }
 

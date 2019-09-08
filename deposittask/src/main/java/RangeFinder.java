@@ -22,7 +22,6 @@ public class RangeFinder {
     }
 
     private boolean isLessThanOrEqualsMaxRange(BigDecimal capital, BigDecimal range) {
-
         return capital.compareTo(range) <= 0;
     }
 

@@ -29,9 +29,9 @@ class CsvRangeProviderTest {
         Range secondRange = new Range(new BigDecimal(10000), new BigDecimal(20000), new BigDecimal(4));
         Range thirdRange = new Range(new BigDecimal(20000), new BigDecimal(30000.00), new BigDecimal(6));
 
-        assertTrue(firstRange.equals(getRangeFromList(csvRangeProvider, 0)));
-        assertTrue(secondRange.equals(getRangeFromList(csvRangeProvider, 1)));
-        assertTrue(thirdRange.equals(getRangeFromList(csvRangeProvider, 2)));
+        assertEquals(firstRange,getRangeFromList(csvRangeProvider, 0));
+        assertEquals(secondRange,getRangeFromList(csvRangeProvider, 1));
+        assertEquals(thirdRange,getRangeFromList(csvRangeProvider, 2));
     }
 
     private Range getRangeFromList(CsvRangeProvider csvRangeProvider, int index) {
