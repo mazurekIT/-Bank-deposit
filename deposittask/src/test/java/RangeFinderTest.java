@@ -44,8 +44,15 @@ class RangeFinderTest {
     @Test
     public void shouldFindFirstRange() {
         Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
-        Optional<Range> properRangeForCapital = rangeFinder.findProperRangeForCapital(new BigDecimal(5000));
-        assertEquals(firstRange,properRangeForCapital.get());
+        Optional<Range> properRangeForCapital = rangeFinder.findProperRangeForCapital(new BigDecimal(10000));
+        assertEquals(firstRange, properRangeForCapital.get());
     }
 
+
+    @Test
+    public void shouldFindSecondRange() {
+        Range secondRange = new Range(new BigDecimal(10000), new BigDecimal(20000), new BigDecimal(4));
+        Optional<Range> properRangeForCapital = rangeFinder.findProperRangeForCapital(new BigDecimal(11000));
+        assertEquals(secondRange, properRangeForCapital.get());
+    }
 }
