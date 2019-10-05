@@ -1,9 +1,7 @@
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -17,17 +15,17 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(JUnitPlatform.class)
 class RangeFinderTest {
 
     @Mock
     RangeProvider rangeProvider;
 
+    @InjectMocks
     RangeFinder rangeFinder;
 
     @BeforeEach
-    public void setUp() {
-        rangeFinder = new RangeFinder(rangeProvider);
+    public void init() {
+        MockitoAnnotations.initMocks(this);
 
         List<Range> rangeList = new ArrayList<>();
         Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
@@ -35,7 +33,6 @@ class RangeFinderTest {
         rangeList.add(firstRange);
         rangeList.add(secondRange);
         Mockito.when(rangeProvider.getAvailableRanges()).thenReturn(rangeList);
-        MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -46,9 +43,9 @@ class RangeFinderTest {
 
     @Test
     public void shouldFindFirstRange() {
+        Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
         Optional<Range> properRangeForCapital = rangeFinder.findProperRangeForCapital(new BigDecimal(5000));
-        assert (properRangeForCapital.isPresent());
+        assertEquals(firstRange,properRangeForCapital.get());
     }
-
 
 }
