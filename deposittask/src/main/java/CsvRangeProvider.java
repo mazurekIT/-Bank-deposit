@@ -44,10 +44,11 @@ public class CsvRangeProvider implements RangeProvider {
 
 
         } catch (IOException e) {
-            throw new FilePathNotFoundException("Błędna ścieżka pliku");
-
+            FilePathNotFoundException exc = new FilePathNotFoundException("Błędna ścieżka pliku");
+            throw  exc;
+        } finally {
+            return rangesList;
         }
-        return rangesList;
 
     }
 
