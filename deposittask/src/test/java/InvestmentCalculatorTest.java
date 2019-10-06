@@ -27,7 +27,7 @@ public class InvestmentCalculatorTest {
     InvestmentCalculator investmentCalculator;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         MockitoAnnotations.initMocks(this);
         Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
         Optional<Range> optionalRange = Optional.of(firstRange);
@@ -37,13 +37,12 @@ public class InvestmentCalculatorTest {
 
 
     @Test
-    public void shouldCalculateProperlyOneYearProfit(){
+    public void shouldCalculateProperlyOneYearProfit() {
         String expectedProfit = DF.format(new BigDecimal(5100));
         String actualProfit = investmentCalculator.calculateOneYearProfit(new BigDecimal(5000));
-        assertEquals(expectedProfit,actualProfit);
+        assertEquals(expectedProfit, actualProfit);
 
     }
-
 
 
 }

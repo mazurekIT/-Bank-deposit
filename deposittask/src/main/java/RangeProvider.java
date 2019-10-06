@@ -2,5 +2,5 @@ import java.util.List;
 
 public interface RangeProvider {
 
-    List<Range> getAvailableRanges();
+    List<Range> getAvailableRanges() ;
 }

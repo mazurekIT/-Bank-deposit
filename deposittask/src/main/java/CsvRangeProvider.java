@@ -44,7 +44,8 @@ public class CsvRangeProvider implements RangeProvider {
 
 
         } catch (IOException e) {
-            System.out.println("Brak pliku o podanej nazwie" + "\n" + e);
+            throw new FilePathNotFoundException("Błędna ścieżka pliku");
+
         }
         return rangesList;
 
