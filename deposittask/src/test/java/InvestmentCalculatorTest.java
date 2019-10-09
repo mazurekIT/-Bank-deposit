@@ -29,21 +29,38 @@ public class InvestmentCalculatorTest {
     @BeforeEach
     public void init() {
         MockitoAnnotations.initMocks(this);
-        Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
-        Optional<Range> optionalRange = Optional.of(firstRange);
-        Mockito.when(rangeFinder.findProperRangeForCapital(any(BigDecimal.class))).thenReturn(optionalRange);
-
     }
 
 
     @Test
     public void shouldCalculateProperlyOneYearProfit() {
+        Range range = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(2));
+        Optional<Range> optionalRange = Optional.of(range);
+        Mockito.when(rangeFinder.findProperRangeForCapital(any(BigDecimal.class))).thenReturn(optionalRange);
+
         String expectedProfit = DF.format(new BigDecimal(5100));
         String actualProfit = investmentCalculator.calculateOneYearProfit(new BigDecimal(5000));
         assertEquals(expectedProfit, actualProfit);
-
     }
 
+    @Test
+    public void shouldCalculateProperlyOneYearProfitWhenCapitalIsOutOfRange(){
+        Optional<Range> range = Optional.empty();
+        Mockito.when(rangeFinder.findProperRangeForCapital(any(BigDecimal.class))).thenReturn(range);
+
+        String expectedProfit = DF.format(new BigDecimal(15000));
+        String actualProfit = investmentCalculator.calculateOneYearProfit(new BigDecimal(15000));
+        assertEquals(expectedProfit, actualProfit);
+    }
+
+    @Test
+    public void shouldCalculateProperlyOneYearProfitWhenCapitalIsNegative(){
+        Optional<Range> range = Optional.empty();
+        Mockito.when(rangeFinder.findProperRangeForCapital(any(BigDecimal.class))).thenReturn(range);
+
+        String actualProfit = investmentCalculator.calculateOneYearProfit(new BigDecimal(-150));
+        assertEquals("0,00", actualProfit);
+    }
 
 }
 

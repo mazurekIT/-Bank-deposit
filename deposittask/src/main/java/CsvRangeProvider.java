@@ -44,7 +44,7 @@ public class CsvRangeProvider implements RangeProvider {
 
 
         } catch (IOException e) {
-            FilePathNotFoundException exc = new FilePathNotFoundException("Błędna ścieżka pliku");
+            FilePathNotFoundException exc = new FilePathNotFoundException("Błędna ścieżka pliku",e);
             throw  exc;
         } finally {
             return rangesList;

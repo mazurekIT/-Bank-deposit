@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args)  {
 
-        Capital capital = new Capital(new BigDecimal(50000));
+        Capital capital = new Capital(new BigDecimal(40000));
 
         RangeProvider rangeProvider = new CsvRangeProvider("progi.csv");
 
