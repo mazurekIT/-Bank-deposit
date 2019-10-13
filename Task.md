@@ -1,4 +1,4 @@
-# Investment bankowa
+# Lokata bankowa
 Napisz moduł do systemu informatycznego, który będzie obliczać zysk z rocznej inwestycji w lokatę bankową. Na wejściu powinna zostać przyjęta kwota inwestowanego kapitału, a na wyjściu pojawić się wartość po zakończeniu lokaty (kapitał wraz z zyskiem). Oprocentowanie lokaty uzależnione jest od inwestowanej kwoty, według poniższego podziału:
 
  	0,00 < kapitał <= 20 000,00 – oprocentowanie 2% w skali roku

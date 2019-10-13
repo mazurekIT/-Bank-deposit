@@ -2,12 +2,17 @@ import java.math.BigDecimal;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
-        System.out.println("Hello world");
+        Capital capital = new Capital(new BigDecimal(40000));
 
-        Investment investment = new Investment();
-        System.out.println(investment.calculateOneYearProfit(new BigDecimal(25001)));
+        RangeProvider rangeProvider = new CsvRangeProvider("progi.csv");
+
+        RangeFinder rangeFinder = new RangeFinder(rangeProvider);
+
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(rangeFinder);
+
+        System.out.println(investmentCalculator.calculateOneYearProfit(capital.getValue()));
 
     }
 }
