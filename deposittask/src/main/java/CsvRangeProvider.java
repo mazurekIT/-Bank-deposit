@@ -23,8 +23,8 @@ public class CsvRangeProvider implements RangeProvider {
 
     @Override
     public List<Range> getAvailableRanges() {
-        List<Range> rangesList = new ArrayList<>();
         try {
+            List<Range> rangesList = new ArrayList<>();
             Reader reader = Files.newBufferedReader(Paths.get(filePath));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
                     .withDelimiter('|')
@@ -34,21 +34,17 @@ public class CsvRangeProvider implements RangeProvider {
                     .withTrim());
 
             for (CSVRecord csvRecord : csvParser) {
-
                 BigDecimal rangeFrom = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_FROM);
                 BigDecimal rangeTo = readFromUnit(csvRecord, UNIT_NAME_FOR_RANGE_TO);
                 BigDecimal interest = readFromUnit(csvRecord, UNIT_NAME_FOR_INTEREST);
 
                 rangesList.add(new Range(rangeFrom, rangeTo, interest));
             }
-
+            return rangesList;
 
         } catch (IOException e) {
             throw new RangesReadException("Błędna ścieżka pliku", e);
         }
-        return rangesList;
-
-
     }
 
     private BigDecimal readFromUnit(CSVRecord record, String unit) {
