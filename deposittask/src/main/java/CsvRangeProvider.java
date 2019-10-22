@@ -43,7 +43,7 @@ public class CsvRangeProvider implements RangeProvider {
             return rangesList;
 
         } catch (IOException e) {
-            throw new RangesReadException("Błędna ścieżka pliku", e);
+            throw new RangesReadException("Błędna ścieżka pliku CSV", e);
         }
     }
 
