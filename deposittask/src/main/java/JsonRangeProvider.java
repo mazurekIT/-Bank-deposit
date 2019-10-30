@@ -13,6 +13,9 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class JsonRangeProvider implements RangeProvider {
     private String filePath;
+    private static final String UNIT_NAME_FOR_RANGE_FROM = "kwota_od";
+    private static final String UNIT_NAME_FOR_RANGE_TO = "kwota_do";
+    private static final String UNIT_NAME_FOR_INTEREST = "oprocentowanie";
 
     public JsonRangeProvider(String filePath) {
         this.filePath = filePath;
@@ -20,8 +23,8 @@ public class JsonRangeProvider implements RangeProvider {
 
     @Override
     public List<Range> getAvailableRanges() {
-        JSONParser jsonParser = new JSONParser();
         try {
+            JSONParser jsonParser = new JSONParser();
             FileReader fileReader = new FileReader(filePath);
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
             JSONArray jsonRanges = (JSONArray) jsonObject.get("ranges");
@@ -31,17 +34,16 @@ public class JsonRangeProvider implements RangeProvider {
             Iterator<JSONObject> iterator = jsonRanges.iterator();
             while (iterator.hasNext()) {
                 JSONObject range = (JSONObject) iterator.next();
-                BigDecimal capitalFrom = new BigDecimal((double) range.get("kwota_od"));
-                BigDecimal capitalTo = new BigDecimal((double) range.get("kwota_do"));
-                BigDecimal interest = new BigDecimal((long) range.get("oprocentowanie"));
+                BigDecimal capitalFrom = new BigDecimal((double) range.get(UNIT_NAME_FOR_RANGE_FROM));
+                BigDecimal capitalTo = new BigDecimal((double) range.get(UNIT_NAME_FOR_RANGE_TO));
+                BigDecimal interest = new BigDecimal((long) range.get(UNIT_NAME_FOR_INTEREST));
                 ranges.add(new Range(capitalFrom, capitalTo, interest));
             }
             return ranges;
         } catch (IOException e) {
             throw new RangesReadException("Błędna ścieżka pliku JSON", e);
         } catch (ParseException e) {
-            System.out.println("Błąd parsowania");
-            throw new RangesReadException("błąd parsowania", e);
+            throw new RangesReadException("błąd parsowania w pliku JSON", e);
         }
     }
 
