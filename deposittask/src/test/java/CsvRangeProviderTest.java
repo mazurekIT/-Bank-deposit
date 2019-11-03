@@ -15,12 +15,6 @@ class CsvRangeProviderTest {
         assertEquals(expectedSizeOfRanges, csvRangeProvider.getAvailableRanges().size());
     }
 
-    private String filePath() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("progiTest.csv").getFile());
-        return file.getAbsolutePath();
-    }
-
     @Test
     public void shouldReadProperlyAllRanges() {
         CsvRangeProvider csvRangeProvider = new CsvRangeProvider(filePath());
@@ -31,6 +25,12 @@ class CsvRangeProviderTest {
         assertEquals(firstRange, getRangeFromList(csvRangeProvider, 0));
         assertEquals(secondRange, getRangeFromList(csvRangeProvider, 1));
         assertEquals(thirdRange, getRangeFromList(csvRangeProvider, 2));
+    }
+
+    private String filePath() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("progiCSVTest.csv").getFile());
+        return file.getAbsolutePath();
     }
 
     private Range getRangeFromList(CsvRangeProvider csvRangeProvider, int index) {

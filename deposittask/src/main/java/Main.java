@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 
 public class Main {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         Capital capital = new Capital(new BigDecimal(40000));
 
@@ -18,13 +18,13 @@ public class Main {
         System.out.println(jsonInvestmentCalculatorJson.calculateOneYearProfit(capital.getValue()));
 
         YamlRangeProvider yamlRangeProvider = new YamlRangeProvider("progiYaml.yaml");
-        RangeFinder yamlRangeFinder= new RangeFinder(yamlRangeProvider);
+        RangeFinder yamlRangeFinder = new RangeFinder(yamlRangeProvider);
         InvestmentCalculator yamlInvestmentCalculator = new InvestmentCalculator(yamlRangeFinder);
         System.out.println(yamlInvestmentCalculator.calculateOneYearProfit(capital.getValue()));
 
 
         XmlRangeProvider xmlRangeProvider = new XmlRangeProvider("progiXml.xml");
-        RangeFinder xmlRangeFinder= new RangeFinder(xmlRangeProvider);
+        RangeFinder xmlRangeFinder = new RangeFinder(xmlRangeProvider);
         InvestmentCalculator xmlInvestmentCalculator = new InvestmentCalculator(xmlRangeFinder);
         System.out.println(xmlInvestmentCalculator.calculateOneYearProfit(capital.getValue()));
     }

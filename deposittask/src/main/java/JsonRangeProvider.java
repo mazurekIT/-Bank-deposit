@@ -33,7 +33,7 @@ public class JsonRangeProvider implements RangeProvider {
 
             Iterator<JSONObject> iterator = jsonRanges.iterator();
             while (iterator.hasNext()) {
-                JSONObject range = (JSONObject) iterator.next();
+                JSONObject range = iterator.next();
                 BigDecimal capitalFrom = new BigDecimal((double) range.get(UNIT_NAME_FOR_RANGE_FROM));
                 BigDecimal capitalTo = new BigDecimal((double) range.get(UNIT_NAME_FOR_RANGE_TO));
                 BigDecimal interest = new BigDecimal((long) range.get(UNIT_NAME_FOR_INTEREST));
@@ -45,10 +45,5 @@ public class JsonRangeProvider implements RangeProvider {
         } catch (ParseException e) {
             throw new RangesReadException("błąd parsowania w pliku JSON", e);
         }
-    }
-
-
-    private static void parseRangeObject(JSONObject range) {
-        JSONObject rangeObject = (JSONObject) range.get("kwota_od");
     }
 }
