@@ -7,6 +7,7 @@ public class Range {
     private BigDecimal interest;
 
     public Range(BigDecimal minCapital, BigDecimal maxCapital, BigDecimal interest) {
+        super();
         if (minCapital.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Invalid minimum Capital: " + minCapital);
         }
@@ -19,6 +20,10 @@ public class Range {
         this.minCapital = minCapital;
         this.maxCapital = maxCapital;
         this.interest = interest;
+    }
+
+    public Range() {
+        super();
     }
 
     @Override

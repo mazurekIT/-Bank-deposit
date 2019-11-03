@@ -17,15 +17,15 @@ public class Main {
         InvestmentCalculator jsonInvestmentCalculatorJson = new InvestmentCalculator(jsonRangeFinder);
         System.out.println(jsonInvestmentCalculatorJson.calculateOneYearProfit(capital.getValue()));
 
-//        XmlRangeProvider xmlRangeProvider = new XmlRangeProvider("progiXml.xml");
-//        RangeFinder xmlRangeFinder= new RangeFinder(xmlRangeProvider);
-//        InvestmentCalculator xmlInvestmentCalculator = new InvestmentCalculator(xmlRangeFinder);
-//        System.out.println(xmlInvestmentCalculator.calculateOneYearProfit(capital.getValue()));
-
-
         YamlRangeProvider yamlRangeProvider = new YamlRangeProvider("progiYaml.yaml");
         RangeFinder yamlRangeFinder= new RangeFinder(yamlRangeProvider);
         InvestmentCalculator yamlInvestmentCalculator = new InvestmentCalculator(yamlRangeFinder);
         System.out.println(yamlInvestmentCalculator.calculateOneYearProfit(capital.getValue()));
+
+
+        XmlRangeProvider xmlRangeProvider = new XmlRangeProvider("progiXml.xml");
+        RangeFinder xmlRangeFinder= new RangeFinder(xmlRangeProvider);
+        InvestmentCalculator xmlInvestmentCalculator = new InvestmentCalculator(xmlRangeFinder);
+        System.out.println(xmlInvestmentCalculator.calculateOneYearProfit(capital.getValue()));
     }
 }

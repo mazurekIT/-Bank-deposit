@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ranges>
+<rangelist>
     <range>
         <kwota_od>0.00</kwota_od>
-        <kwota_do>2000.00</kwota_do>
+        <kwota_do>20000.00</kwota_do>
         <oprocentowanie>4</oprocentowanie>
     </range>
     <range>
-        <kwota_od>2000.00</kwota_od>
-        <kwota_do>4000.00</kwota_do>
+        <kwota_od>20000.00</kwota_od>
+        <kwota_do>41000.00</kwota_do>
         <oprocentowanie>8</oprocentowanie>
     </range>
     <range>
-        <kwota_od>4000.00</kwota_od>
-        <kwota_do>6000.00</kwota_do>
+        <kwota_od>41000.00</kwota_od>
+        <kwota_do>60000.00</kwota_do>
         <oprocentowanie>12</oprocentowanie>
     </range>
-</ranges>
+</rangelist>
