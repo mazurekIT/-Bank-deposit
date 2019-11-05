@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CsvRangeProviderTest {
 
-
     @Test
     public void shouldCheckSizeOfRangesList() {
         CsvRangeProvider csvRangeProvider = new CsvRangeProvider(filePath());

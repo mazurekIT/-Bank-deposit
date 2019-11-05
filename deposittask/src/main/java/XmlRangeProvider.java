@@ -61,6 +61,6 @@ public class XmlRangeProvider implements RangeProvider {
 
 
     private BigDecimal convertStringToBigDecimal(String number) {
-        return new BigDecimal(number);
+        return new BigDecimal(Double.parseDouble(number));
     }
 }
