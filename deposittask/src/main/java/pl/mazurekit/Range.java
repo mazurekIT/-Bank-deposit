@@ -1,3 +1,5 @@
+package pl.mazurekit;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -8,10 +10,10 @@ public class Range {
 
     public Range(BigDecimal minCapital, BigDecimal maxCapital, BigDecimal interest) {
         if (minCapital.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Invalid minimum Capital: " + minCapital);
+            throw new IllegalArgumentException("Invalid minimum pl.mazzurekit.Capital: " + minCapital);
         }
         if (maxCapital.compareTo(BigDecimal.ZERO) < 1) {
-            throw new IllegalArgumentException("Invalid maximum Capital: " + maxCapital);
+            throw new IllegalArgumentException("Invalid maximum pl.mazzurekit.Capital: " + maxCapital);
         }
         if (interest.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Invalid interest: " + interest);
@@ -19,9 +21,6 @@ public class Range {
         this.minCapital = minCapital;
         this.maxCapital = maxCapital;
         this.interest = interest;
-    }
-
-    public Range() {
     }
 
     @Override

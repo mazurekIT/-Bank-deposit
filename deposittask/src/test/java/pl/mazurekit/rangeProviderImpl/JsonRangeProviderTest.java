@@ -1,8 +1,12 @@
+package pl.mazurekit.rangeProviderImpl;
+
 import org.junit.jupiter.api.Test;
+import pl.mazurekit.Range;
 
 import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static pl.mazurekit.RangeHelper.aRange;
 
 class JsonRangeProviderTest {
 
@@ -16,9 +20,9 @@ class JsonRangeProviderTest {
     @Test
     public void shouldReadProperlyAllRanges() {
         JsonRangeProvider jsonRangeProvider = new JsonRangeProvider(filePath());
-        Range firstRange = RangeHelper.aRange(0, 10000, 3);
-        Range secondRange = RangeHelper.aRange(10000, 20000, 6);
-        Range thirdRange = RangeHelper.aRange(20000, 30000, 9);
+        Range firstRange = aRange(0, 10000, 3);
+        Range secondRange = aRange(10000, 20000, 6);
+        Range thirdRange = aRange(20000, 30000, 9);
 
         assertEquals(firstRange, getRangeFromList(jsonRangeProvider, 0));
         assertEquals(secondRange, getRangeFromList(jsonRangeProvider, 1));

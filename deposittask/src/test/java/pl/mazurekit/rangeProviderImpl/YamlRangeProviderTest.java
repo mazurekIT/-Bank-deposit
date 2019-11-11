@@ -1,9 +1,13 @@
+package pl.mazurekit.rangeProviderImpl;
+
 import org.junit.jupiter.api.Test;
+import pl.mazurekit.Range;
 
 import java.io.File;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static pl.mazurekit.RangeHelper.aRange;
 
 class YamlRangeProviderTest {
 
@@ -17,9 +21,9 @@ class YamlRangeProviderTest {
     @Test
     public void shouldReadProperlyAllRanges() {
         YamlRangeProvider yamlRangeProvider = new YamlRangeProvider(filePath());
-        Range firstRange = RangeHelper.aRange(0, 10000, 4);
-        Range secondRange = RangeHelper.aRange(10000, 20000, 8);
-        Range thirdRange = RangeHelper.aRange(20000, 30000, 12);
+        Range firstRange = aRange(0, 10000, 4);
+        Range secondRange = aRange(10000, 20000, 8);
+        Range thirdRange = aRange(20000, 30000, 12);
 
         assertEquals(firstRange, getRangeFromList(yamlRangeProvider, 0));
         assertEquals(secondRange, getRangeFromList(yamlRangeProvider, 1));

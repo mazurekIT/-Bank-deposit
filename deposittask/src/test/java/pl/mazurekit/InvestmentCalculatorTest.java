@@ -1,3 +1,7 @@
+package pl.mazurekit;
+
+import pl.mazurekit.InvestmentCalculator;
+import pl.mazurekit.Range;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -6,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.mazurekit.RangeFinder;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

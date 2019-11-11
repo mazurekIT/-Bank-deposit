@@ -1,3 +1,8 @@
+package pl.mazurekit.rangeProviderImpl;
+
+import pl.mazurekit.Range;
+import pl.mazurekit.RangeProvider;
+import pl.mazurekit.RangesReadException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -43,7 +48,7 @@ public class JsonRangeProvider implements RangeProvider {
         } catch (IOException e) {
             throw new RangesReadException("Błędna ścieżka pliku JSON", e);
         } catch (ParseException e) {
-            throw new RangesReadException("błąd parsowania w pliku JSON", e);
+            throw new RangesReadException("Błąd parsowania w pliku JSON", e);
         }
     }
 }

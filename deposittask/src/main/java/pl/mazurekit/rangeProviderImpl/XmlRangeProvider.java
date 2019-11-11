@@ -1,3 +1,8 @@
+package pl.mazurekit.rangeProviderImpl;
+
+import pl.mazurekit.Range;
+import pl.mazurekit.RangeProvider;
+import pl.mazurekit.RangesReadException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -52,11 +57,10 @@ public class XmlRangeProvider implements RangeProvider {
             return ranges;
 
         } catch (ParserConfigurationException e) {
-            throw new RangesReadException("Błędna ścieżka pliku XML", e);
+            throw new RangesReadException("Błąd parsowania w pliku XML", e);
         } catch (SAXException | IOException e) {
-            e.printStackTrace();
+            throw new RangesReadException("Błędna ścieżka pliku XML", e);
         }
-        return null;
     }
 
 

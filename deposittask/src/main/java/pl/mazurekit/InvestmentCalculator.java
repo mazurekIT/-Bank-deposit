@@ -1,3 +1,5 @@
+package pl.mazurekit;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Optional;

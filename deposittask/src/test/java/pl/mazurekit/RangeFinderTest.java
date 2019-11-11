@@ -1,3 +1,8 @@
+package pl.mazurekit;
+
+import pl.mazurekit.Range;
+import pl.mazurekit.RangeFinder;
+import pl.mazurekit.RangeProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

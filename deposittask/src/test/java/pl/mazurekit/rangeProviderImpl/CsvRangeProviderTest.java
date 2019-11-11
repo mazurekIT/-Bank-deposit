@@ -1,8 +1,12 @@
+package pl.mazurekit.rangeProviderImpl;
+
 import org.junit.jupiter.api.Test;
+import pl.mazurekit.Range;
 
 import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static pl.mazurekit.RangeHelper.aRange;
 
 class CsvRangeProviderTest {
 
@@ -16,9 +20,9 @@ class CsvRangeProviderTest {
     @Test
     public void shouldReadProperlyAllRanges() {
         CsvRangeProvider csvRangeProvider = new CsvRangeProvider(filePath());
-        Range firstRange = RangeHelper.aRange(0, 10000, 2);
-        Range secondRange = RangeHelper.aRange(10000, 20000, 4);
-        Range thirdRange = RangeHelper.aRange(20000, 30000, 6);
+        Range firstRange = aRange(0, 10000, 2);
+        Range secondRange = aRange(10000, 20000, 4);
+        Range thirdRange = aRange(20000, 30000, 6);
 
         assertEquals(firstRange, getRangeFromList(csvRangeProvider, 0));
         assertEquals(secondRange, getRangeFromList(csvRangeProvider, 1));

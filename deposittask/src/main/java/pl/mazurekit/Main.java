@@ -1,3 +1,10 @@
+package pl.mazurekit;
+
+import pl.mazurekit.rangeProviderImpl.CsvRangeProvider;
+import pl.mazurekit.rangeProviderImpl.JsonRangeProvider;
+import pl.mazurekit.rangeProviderImpl.XmlRangeProvider;
+import pl.mazurekit.rangeProviderImpl.YamlRangeProvider;
+
 import java.math.BigDecimal;
 
 

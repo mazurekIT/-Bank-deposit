@@ -1,4 +1,7 @@
+package pl.mazurekit;
+
 import org.junit.jupiter.api.Test;
+import pl.mazurekit.Capital;
 
 import java.math.BigDecimal;
 
