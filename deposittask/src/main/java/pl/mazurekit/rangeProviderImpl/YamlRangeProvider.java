@@ -1,9 +1,9 @@
 package pl.mazurekit.rangeProviderImpl;
 
+import org.yaml.snakeyaml.Yaml;
 import pl.mazurekit.Range;
 import pl.mazurekit.RangeProvider;
 import pl.mazurekit.RangesReadException;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,19 +1,19 @@
 package pl.mazurekit;
 
 import org.junit.jupiter.api.Test;
-import pl.mazurekit.Capital;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CapitalTest {
 
     @Test
-    public void create(){
+    public void create() {
         final Capital capital = new Capital(new BigDecimal(10));
         BigDecimal bigDecimal = new BigDecimal(10);
-        assertEquals(bigDecimal,capital.getValue());
+        assertEquals(bigDecimal, capital.getValue());
     }
 
 

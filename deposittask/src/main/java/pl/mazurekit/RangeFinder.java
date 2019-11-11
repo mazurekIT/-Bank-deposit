@@ -10,7 +10,7 @@ public class RangeFinder {
         this.rangeProvider = rangeProvider;
     }
 
-    public Optional<Range> findProperRangeForCapital(BigDecimal startCapital)  {
+    public Optional<Range> findProperRangeForCapital(BigDecimal startCapital) {
         for (Range range : rangeProvider.getAvailableRanges()) {
             if (isMoreThanMinRange(startCapital, range.getMinCapital()) && isLessThanOrEqualsMaxRange(startCapital, range.getMaxCapital())) {
                 return Optional.of(range);

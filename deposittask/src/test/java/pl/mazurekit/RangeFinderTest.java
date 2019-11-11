@@ -1,8 +1,5 @@
 package pl.mazurekit;
 
-import pl.mazurekit.Range;
-import pl.mazurekit.RangeFinder;
-import pl.mazurekit.RangeProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,15 +60,15 @@ class RangeFinderTest {
     }
 
     @Test
-    public void shouldNotFindRangeForCapitalOutOfRange(){
+    public void shouldNotFindRangeForCapitalOutOfRange() {
         Optional<Range> optionalRange = rangeFinder.findProperRangeForCapital(new BigDecimal(45000));
-        assertFalse (optionalRange.isPresent());
+        assertFalse(optionalRange.isPresent());
     }
 
     @Test
-    public void shouldNotFindRangeForNegativeCapital(){
+    public void shouldNotFindRangeForNegativeCapital() {
         Optional<Range> optionalRange = rangeFinder.findProperRangeForCapital(new BigDecimal(-45000));
-        assertFalse (optionalRange.isPresent());
+        assertFalse(optionalRange.isPresent());
     }
 
 }
