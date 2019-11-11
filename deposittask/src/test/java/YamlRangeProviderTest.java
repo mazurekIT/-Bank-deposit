@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class YamlRangeProviderTest {
 
@@ -15,15 +15,15 @@ class YamlRangeProviderTest {
     }
 
     @Test
-    public void shouldReadProperlyAllRanges(){
+    public void shouldReadProperlyAllRanges() {
         YamlRangeProvider yamlRangeProvider = new YamlRangeProvider(filePath());
-        Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(4));
-        Range secondRange = new Range(new BigDecimal(10000), new BigDecimal(20000), new BigDecimal(8));
-        Range thirdRange = new Range(new BigDecimal(20000), new BigDecimal(30000), new BigDecimal(12));
+        Range firstRange = RangeHelper.aRange(0, 10000, 4);
+        Range secondRange = RangeHelper.aRange(10000, 20000, 8);
+        Range thirdRange = RangeHelper.aRange(20000, 30000, 12);
 
-        assertEquals(firstRange,getRangeFromList(yamlRangeProvider,0));
-        assertEquals(secondRange,getRangeFromList(yamlRangeProvider,1));
-        assertEquals(thirdRange,getRangeFromList(yamlRangeProvider,2));
+        assertEquals(firstRange, getRangeFromList(yamlRangeProvider, 0));
+        assertEquals(secondRange, getRangeFromList(yamlRangeProvider, 1));
+        assertEquals(thirdRange, getRangeFromList(yamlRangeProvider, 2));
     }
 
     private String filePath() {
@@ -34,6 +34,10 @@ class YamlRangeProviderTest {
 
     private Range getRangeFromList(YamlRangeProvider yamlRangeProvider, int index) {
         return yamlRangeProvider.getAvailableRanges().get(index);
+    }
+
+    private Range createRange() {
+        return new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(4));
     }
 
 }

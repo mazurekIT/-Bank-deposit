@@ -1,9 +1,8 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JsonRangeProviderTest {
 
@@ -15,15 +14,15 @@ class JsonRangeProviderTest {
     }
 
     @Test
-    public void shouldReadProperlyAllRanges(){
+    public void shouldReadProperlyAllRanges() {
         JsonRangeProvider jsonRangeProvider = new JsonRangeProvider(filePath());
-        Range firstRange = new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(3));
-        Range secondRange = new Range(new BigDecimal(10000), new BigDecimal(20000), new BigDecimal(6));
-        Range thirdRange = new Range(new BigDecimal(20000), new BigDecimal(30000), new BigDecimal(9));
+        Range firstRange = RangeHelper.aRange(0, 10000, 3);
+        Range secondRange = RangeHelper.aRange(10000, 20000, 6);
+        Range thirdRange = RangeHelper.aRange(20000, 30000, 9);
 
-        assertEquals(firstRange,getRangeFromList(jsonRangeProvider,0));
-        assertEquals(secondRange,getRangeFromList(jsonRangeProvider,1));
-        assertEquals(thirdRange,getRangeFromList(jsonRangeProvider,2));
+        assertEquals(firstRange, getRangeFromList(jsonRangeProvider, 0));
+        assertEquals(secondRange, getRangeFromList(jsonRangeProvider, 1));
+        assertEquals(thirdRange, getRangeFromList(jsonRangeProvider, 2));
     }
 
     private String filePath() {
