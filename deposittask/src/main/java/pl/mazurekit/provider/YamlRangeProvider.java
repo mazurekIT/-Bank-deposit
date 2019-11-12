@@ -1,8 +1,7 @@
-package pl.mazurekit.rangeProviderImpl;
+package pl.mazurekit.provider;
 
 import org.yaml.snakeyaml.Yaml;
 import pl.mazurekit.Range;
-import pl.mazurekit.RangeProvider;
 import pl.mazurekit.RangesReadException;
 
 import java.io.File;
@@ -26,20 +25,20 @@ public class YamlRangeProvider implements RangeProvider {
 
     @Override
     public List<Range> getAvailableRanges() {
-        List<Range> obj = new ArrayList<>();
+        List<Range> ranges = new ArrayList<>();
         Yaml yaml = new Yaml();
         try (FileInputStream fileInputStream = new FileInputStream(new File(filePath))) {
             LinkedHashMap<String, ArrayList<LinkedHashMap<String, Number>>> load = yaml.load(fileInputStream);
             ArrayList<LinkedHashMap<String, Number>> rangeList = load.get("ranges");
             for (LinkedHashMap<String, Number> r : rangeList) {
-                obj.add(new Range(
+                ranges.add(new Range(
                         convertNumberToBigDecimal(r.get(UNIT_NAME_FOR_RANGE_FROM)),
                         convertNumberToBigDecimal(r.get(UNIT_NAME_FOR_RANGE_TO)),
                         convertNumberToBigDecimal(r.get(UNIT_NAME_FOR_INTEREST))
                 ));
             }
 
-            return obj;
+            return ranges;
         } catch (IOException e) {
             throw new RangesReadException("Błędna ścieżka pliku YAML", e);
         }

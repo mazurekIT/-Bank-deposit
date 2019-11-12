@@ -1,4 +1,4 @@
-package pl.mazurekit.rangeProviderImpl;
+package pl.mazurekit.provider;
 
 import org.junit.jupiter.api.Test;
 import pl.mazurekit.Range;
@@ -39,9 +39,4 @@ class YamlRangeProviderTest {
     private Range getRangeFromList(YamlRangeProvider yamlRangeProvider, int index) {
         return yamlRangeProvider.getAvailableRanges().get(index);
     }
-
-    private Range createRange() {
-        return new Range(new BigDecimal(0), new BigDecimal(10000), new BigDecimal(4));
-    }
-
 }

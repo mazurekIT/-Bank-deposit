@@ -1,4 +1,6 @@
-package pl.mazurekit;
+package pl.mazurekit.provider;
+
+import pl.mazurekit.Range;
 
 import java.util.List;
 

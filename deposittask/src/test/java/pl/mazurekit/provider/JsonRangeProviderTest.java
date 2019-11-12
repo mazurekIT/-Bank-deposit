@@ -1,4 +1,4 @@
-package pl.mazurekit.rangeProviderImpl;
+package pl.mazurekit.provider;
 
 import org.junit.jupiter.api.Test;
 import pl.mazurekit.Range;

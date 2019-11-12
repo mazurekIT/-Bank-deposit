@@ -1,4 +1,4 @@
-package pl.mazurekit.rangeProviderImpl;
+package pl.mazurekit.provider;
 
 import org.junit.jupiter.api.Test;
 import pl.mazurekit.Range;
@@ -38,10 +38,6 @@ class XmlRangeProviderTest {
 
     private Range getRangeFromList(XmlRangeProvider xmlRangeProvider, int index) {
         return xmlRangeProvider.getAvailableRanges().get(index);
-    }
-
-    private Range createRange(int a, int b, int c) {
-        return new Range(new BigDecimal(a), new BigDecimal(b), new BigDecimal(c));
     }
 
 }

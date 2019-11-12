@@ -10,10 +10,10 @@ public class Range {
 
     public Range(BigDecimal minCapital, BigDecimal maxCapital, BigDecimal interest) {
         if (minCapital.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Invalid minimum pl.mazzurekit.Capital: " + minCapital);
+            throw new IllegalArgumentException("Invalid minimum Capital: " + minCapital);
         }
         if (maxCapital.compareTo(BigDecimal.ZERO) < 1) {
-            throw new IllegalArgumentException("Invalid maximum pl.mazzurekit.Capital: " + maxCapital);
+            throw new IllegalArgumentException("Invalid maximum Capital: " + maxCapital);
         }
         if (interest.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Invalid interest: " + interest);
