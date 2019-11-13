@@ -1,3 +1,5 @@
+package pl.mazurekit;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,7 +46,7 @@ public class InvestmentCalculatorTest {
     }
 
     @Test
-    public void shouldCalculateProperlyOneYearProfitWhenCapitalIsOutOfRange(){
+    public void shouldCalculateProperlyOneYearProfitWhenCapitalIsOutOfRange() {
         Optional<Range> range = Optional.empty();
         Mockito.when(rangeFinder.findProperRangeForCapital(any(BigDecimal.class))).thenReturn(range);
 
@@ -54,7 +56,7 @@ public class InvestmentCalculatorTest {
     }
 
     @Test
-    public void shouldCalculateProperlyOneYearProfitWhenCapitalIsNegative(){
+    public void shouldCalculateProperlyOneYearProfitWhenCapitalIsNegative() {
         Optional<Range> range = Optional.empty();
         Mockito.when(rangeFinder.findProperRangeForCapital(any(BigDecimal.class))).thenReturn(range);
 

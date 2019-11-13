@@ -1,3 +1,5 @@
+package pl.mazurekit;
+
 import java.math.BigDecimal;
 
 public class Capital {
@@ -10,7 +12,6 @@ public class Capital {
         }
         this.value = value;
     }
-
 
     public BigDecimal getValue() {
         return value;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rangelist>
+    <range>
+        <kwota_od>0.00</kwota_od>
+        <kwota_do>10000.00</kwota_do>
+        <oprocentowanie>1</oprocentowanie>
+    </range>
+    <range>
+        <kwota_od>10000.00</kwota_od>
+        <kwota_do>20000.00</kwota_do>
+        <oprocentowanie>2</oprocentowanie>
+    </range>
+    <range>
+        <kwota_od>20000.00</kwota_od>
+        <kwota_do>30000.00</kwota_do>
+        <oprocentowanie>3</oprocentowanie>
+    </range>
+</rangelist>
+

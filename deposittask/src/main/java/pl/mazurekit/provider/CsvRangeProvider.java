@@ -1,6 +1,11 @@
+package pl.mazurekit.provider;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import pl.mazurekit.Range;
+import pl.mazurekit.RangeProvider;
+import pl.mazurekit.RangesReadException;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -43,7 +48,7 @@ public class CsvRangeProvider implements RangeProvider {
             return rangesList;
 
         } catch (IOException e) {
-            throw new RangesReadException("Błędna ścieżka pliku", e);
+            throw new RangesReadException("Błędna ścieżka pliku CSV", e);
         }
     }
 

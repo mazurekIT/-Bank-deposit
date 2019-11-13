@@ -1,3 +1,5 @@
+package pl.mazurekit;
+
 import java.math.BigDecimal;
 import java.util.Optional;
 
@@ -8,7 +10,7 @@ public class RangeFinder {
         this.rangeProvider = rangeProvider;
     }
 
-    public Optional<Range> findProperRangeForCapital(BigDecimal startCapital)  {
+    public Optional<Range> findProperRangeForCapital(BigDecimal startCapital) {
         for (Range range : rangeProvider.getAvailableRanges()) {
             if (isMoreThanMinRange(startCapital, range.getMinCapital()) && isLessThanOrEqualsMaxRange(startCapital, range.getMaxCapital())) {
                 return Optional.of(range);
@@ -18,7 +20,7 @@ public class RangeFinder {
     }
 
     private boolean isMoreThanMinRange(BigDecimal capital, BigDecimal range) {
-        return capital.compareTo(range) == 1;
+        return capital.compareTo(range) > 0;
     }
 
     private boolean isLessThanOrEqualsMaxRange(BigDecimal capital, BigDecimal range) {

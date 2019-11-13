@@ -1,0 +1,24 @@
+{
+  "ranges": [
+    {
+      "kwota_od": 0.00,
+      "kwota_do": 10000.00,
+      "oprocentowanie": 1
+    },
+    {
+      "kwota_od": 10000.00,
+      "kwota_do": 20000.00,
+      "oprocentowanie": 2
+    },
+    {
+      "kwota_od": 20000.00,
+      "kwota_do": 30000.00,
+      "oprocentowanie": 3
+    },
+    {
+      "kwota_od": 30000.00,
+      "kwota_do": 40000.00,
+      "oprocentowanie": 4
+    }
+  ]
+}

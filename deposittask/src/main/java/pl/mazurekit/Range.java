@@ -1,8 +1,9 @@
+package pl.mazurekit;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Range {
-
     private BigDecimal minCapital;
     private BigDecimal maxCapital;
     private BigDecimal interest;

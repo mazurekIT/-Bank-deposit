@@ -1,3 +1,5 @@
+package pl.mazurekit;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Optional;
@@ -13,7 +15,7 @@ public class InvestmentCalculator {
 
     public String calculateOneYearProfit(BigDecimal startCapital) {
         Optional<Range> properRangeForCapital = rangeFinder.findProperRangeForCapital(startCapital);
-        if (startCapital.compareTo(BigDecimal.ZERO)==-1){
+        if (startCapital.compareTo(BigDecimal.ZERO) == -1) {
             return DF.format(BigDecimal.ZERO);
         } else {
             if (properRangeForCapital.isPresent()) {
@@ -24,6 +26,4 @@ public class InvestmentCalculator {
             return DF.format(startCapital);
         }
     }
-
-
 }
