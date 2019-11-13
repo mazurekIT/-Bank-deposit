@@ -1,7 +1,5 @@
 package pl.mazurekit;
 
-import pl.mazurekit.provider.RangeProvider;
-
 import java.math.BigDecimal;
 import java.util.Optional;
 

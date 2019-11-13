@@ -1,4 +1,4 @@
-package pl.mazurekit.provider;
+package pl.mazurekit;
 
 import pl.mazurekit.Range;
 

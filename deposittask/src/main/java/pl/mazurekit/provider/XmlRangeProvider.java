@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import pl.mazurekit.Range;
+import pl.mazurekit.RangeProvider;
 import pl.mazurekit.RangesReadException;
 
 import javax.xml.parsers.DocumentBuilder;

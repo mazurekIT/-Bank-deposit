@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import pl.mazurekit.Range;
+import pl.mazurekit.RangeProvider;
 import pl.mazurekit.RangesReadException;
 
 import java.io.FileReader;

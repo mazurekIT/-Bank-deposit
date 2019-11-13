@@ -2,6 +2,7 @@ package pl.mazurekit.provider;
 
 import org.yaml.snakeyaml.Yaml;
 import pl.mazurekit.Range;
+import pl.mazurekit.RangeProvider;
 import pl.mazurekit.RangesReadException;
 
 import java.io.File;
